@@ -103,19 +103,29 @@ const planets = [
   },
 ];
 
-const planetMeshes = planets.map((planet) => {
-  // create the mesh
+const createPlanet = (planet) => {
+  // create the mesh and add it to the scene
   const planetMesh = new THREE.Mesh(sphereGeometry, planet.material);
-  // set the scale
   planetMesh.scale.setScalar(planet.radius);
   planetMesh.position.x = planet.distance;
-  // add it our scene
+
+  return planetMesh;
+};
+
+const createMoon = (moon) => {
+  const moonMesh = new THREE.Mesh(sphereGeometry, moonMaterial);
+  moonMesh.scale.setScalar(moon.radius);
+  moonMesh.position.x = moon.distance;
+
+  return moonMesh;
+};
+
+const planetMeshes = planets.map((planet) => {
+  const planetMesh = createPlanet(planet);
   scene.add(planetMesh);
   // loop through each moon and create the moon
   planet.moons.forEach((moon) => {
-    const moonMesh = new THREE.Mesh(sphereGeometry, moonMaterial);
-    moonMesh.scale.setScalar(moon.radius);
-    moonMesh.position.x = moon.distance;
+    const moonMesh = createMoon(moon);
     planetMesh.add(moonMesh);
   });
 
