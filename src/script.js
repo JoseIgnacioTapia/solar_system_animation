@@ -20,11 +20,6 @@ const venusTexture = textureLoader.load('./textures/2k_venus_surface.jpg');
 const earthTexture = textureLoader.load('./textures/2k_earth_daymap.jpg');
 const marsTexture = textureLoader.load('./textures/2k_mars.jpg');
 const moonTexture = textureLoader.load('./textures/2k_moon.jpg');
-// const backgroundTexture = textureLoader.load(
-//   './textures/2k_stars_milky_way.jpg'
-// );
-
-// scene.background = backgroundTexture;
 
 const backgroundCubemap = cubeTextureLoader.load([
   'px.png',
